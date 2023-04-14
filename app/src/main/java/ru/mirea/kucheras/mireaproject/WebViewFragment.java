@@ -1,7 +1,6 @@
 package ru.mirea.kucheras.mireaproject;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;

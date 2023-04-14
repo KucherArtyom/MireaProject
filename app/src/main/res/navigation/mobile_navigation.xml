@@ -32,4 +32,9 @@
         android:name="ru.mirea.kucheras.mireaproject.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" />
+    <fragment
+        android:id="@+id/soundFragment"
+        android:name="ru.mirea.kucheras.mireaproject.SoundFragment"
+        android:label="fragment_sound"
+        tools:layout="@layout/fragment_sound" />
 </navigation>

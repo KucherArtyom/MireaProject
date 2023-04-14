@@ -22,5 +22,8 @@
         <item
             android:id="@+id/nav_web"
             android:title="WebViewFragment" />
+        <item
+            android:id="@+id/soundFragment"
+            android:title="SoundFragment" />
     </group>
 </menu>
