@@ -23,6 +23,15 @@
             android:id="@+id/nav_web"
             android:title="WebViewFragment" />
         <item
+            android:id="@+id/microphoneFragment"
+            android:title="MicrophoneFragment" />
+        <item
+            android:id="@+id/sensorFragment"
+            android:title="SensorFragment" />
+        <item
+            android:id="@+id/cameraFragment"
+            android:title="CameraFragment" />
+        <item
             android:id="@+id/soundFragment"
             android:title="SoundFragment" />
     </group>
