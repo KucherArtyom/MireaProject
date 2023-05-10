@@ -34,5 +34,11 @@
         <item
             android:id="@+id/soundFragment"
             android:title="SoundFragment" />
+        <item
+            android:id="@+id/filesFragment"
+            android:title="FilesFragment" />
+        <item
+            android:id="@+id/profileFragment"
+            android:title="ProfileFragment" />
     </group>
 </menu>

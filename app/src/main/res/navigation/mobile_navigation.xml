@@ -52,4 +52,14 @@
         android:name="ru.mirea.kucheras.mireaproject.SensorFragment"
         android:label="fragment_sensor"
         tools:layout="@layout/fragment_sensor" />
+    <fragment
+        android:id="@+id/filesFragment"
+        android:name="ru.mirea.kucheras.mireaproject.FilesFragment"
+        android:label="fragment_files"
+        tools:layout="@layout/fragment_files" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.mirea.kucheras.mireaproject.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
