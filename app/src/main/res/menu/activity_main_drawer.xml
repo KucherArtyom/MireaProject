@@ -40,5 +40,8 @@
         <item
             android:id="@+id/profileFragment"
             android:title="ProfileFragment" />
+        <item
+            android:id="@+id/httpFragment"
+            android:title="HttpFragment" />
     </group>
 </menu>

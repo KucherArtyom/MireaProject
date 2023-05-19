@@ -62,4 +62,9 @@
         android:name="ru.mirea.kucheras.mireaproject.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/httpFragment"
+        android:name="ru.mirea.kucheras.mireaproject.HttpFragment"
+        android:label="fragment_http"
+        tools:layout="@layout/fragment_http" />
 </navigation>
