@@ -67,4 +67,9 @@
         android:name="ru.mirea.kucheras.mireaproject.HttpFragment"
         android:label="fragment_http"
         tools:layout="@layout/fragment_http" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="ru.mirea.kucheras.mireaproject.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
 </navigation>
