@@ -1,5 +1,7 @@
 package ru.mirea.kucheras.mireaproject;
 
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
@@ -88,65 +90,13 @@ public class CameraFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        int cameraPermissionStatus = ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.CAMERA);
-        int storagePermissionStatus = ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        binding = FragmentCameraBinding.inflate(inflater,container,false);
+        super.onCreate(savedInstanceState);
+        binding = FragmentCameraBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        // Inflate the layout for this fragment
-        if (cameraPermissionStatus == PackageManager.PERMISSION_GRANTED && storagePermissionStatus
-                == PackageManager.PERMISSION_GRANTED) {
-            isWork = true;
-        } else {
-            ActivityCompat.requestPermissions(getActivity(), new String[] {android.Manifest.permission.CAMERA,
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION);
-        }
-        ActivityResultCallback<ActivityResult> callback = new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == Activity.RESULT_OK) {
-                    Intent data = result.getData();
-                    binding.cameraView.setImageURI(imageUri);
-                }
-            }
-        };
-
-        ActivityResultLauncher<Intent> cameraActivityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                callback);
-        binding.cameraView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (isWork) {
-                    try {
-                        File photoFile = createImageFile();
-                        String authorities = getActivity().getApplicationContext().getPackageName() + ".fileprovider";
-                        imageUri = FileProvider.getUriForFile(getActivity(), authorities, photoFile);
-                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                        cameraActivityResultLauncher.launch(cameraIntent);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        Intent intent = new Intent(getContext(), ActivityCamera.class);
+        startActivity(intent);
         return view;
     }
 
-    private File createImageFile() throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(new Date());
-        String imageFileName = "IMAGE_" + timeStamp + "_";
-        File storageDirectory = getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        return File.createTempFile(imageFileName, ".jpg", storageDirectory);
-    }
-    @Override
 
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE_PERMISSION) {
-            isWork = grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED;
-        }
-    }
 }
